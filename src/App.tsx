@@ -41,6 +41,7 @@ function App() {
   ];
   return (
     <Box bg="gray.800" p={5} borderRadius="2xl" boxShadow="md">
+      <script src="http://localhost:8097"></script>
       <VStack gap={3} align="stretch">
         <Text fontWeight="bold" color="white">
           Create a post
