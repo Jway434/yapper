@@ -9,7 +9,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import React, { useState} from "react";
+import { useState } from "react";
 import tweetsData from "./data/tweets.json";
 import type { Tweet } from "./types/Tweet";
 
@@ -19,6 +19,26 @@ function App() {
   //settweet is a function
   const [tweets, setTweets] = useState<Tweet[]>(tweetsData as Tweet[]);
   
+  const [input, setInput] = useState("")
+
+
+  const handleYap = () => {
+    if(!input.trim()) return;
+    const newTweet: Tweet = {
+      id: Date.now(),
+      name: "JoeShmoe",
+      username: "@you",
+      createdAt: new Date().toISOString(),
+      text: input.trim(),
+      likes: 0,
+      replies: 0,
+      tag: "",
+    }
+    //new tweet firs, then other low
+    setTweets([newTweet, ...tweets]);
+    //clear after post
+    setInput("");
+  };
 
   // Save the current time once during this render.
   const currentTime = new Date().toISOString();
@@ -61,8 +81,10 @@ function App() {
                 bg="gray.700"
                 borderColor="gray.600"
                 color="white"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
               />
-              <Button alignSelf="flex-end" bg="blue.500" color="white">
+              <Button alignSelf="flex-end" bg="blue.500" color="white" onClick={handleYap}>
                 Yap
               </Button>
             </VStack>
