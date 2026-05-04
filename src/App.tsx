@@ -32,7 +32,7 @@ function App() {
       text: input.trim(),
       likes: 0,
       replies: 0,
-      tag: "",
+      tag: "Unemployed",
     }
     //new tweet firs, then other low
     setTweets([newTweet, ...tweets]);
