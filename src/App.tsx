@@ -10,9 +10,12 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import tweetsData from "./data/tweets.json";
+import type { Tweet } from "./types/Tweet";
 
 
 function App() {
+  //tweets is the normal tweet
+  //settweet is a function
   const [tweets, setTweets] = useState<Tweet[]>(tweetsData as Tweet[]);
   
 
