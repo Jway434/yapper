@@ -9,37 +9,12 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import tweetsData from "./data/tweets.json";
+
 
 function App() {
-  const tweets = [
-  {
-    "name": "Maya Johnson",
-    "username": "@maya_codes",
-    "createdAt": "2026-05-03T09:58:00.000Z",
-    "text": "Just got my first React page running. Components are starting to make sense.",
-    "likes": 14,
-    "replies": 3,
-    "tag": "Web Dev"
-  },
-  {
-    "name": "Ethan Brooks",
-    "username": "@ethanbuilds",
-    "createdAt": "2026-05-02T09:48:00.000Z",
-    "text": "Hardcoding data first helps me focus on the page layout before adding real input.",
-    "likes": 22,
-    "replies": 5,
-    "tag": "React"
-  },
-  {
-    "name": "Ava Smith",
-    "username": "@ava_secure",
-    "createdAt": "2026-05-01T09:35:00.000Z",
-    "text": "A .map() lets us turn an array of data into repeated cards on the screen.",
-    "likes": 31,
-    "replies": 8,
-    "tag": "Cyber 301"
-  }
-];
+  const [tweets, setTweets] = useState<Tweet[]>(tweetsData as Tweet[]);
+  
 
   // Save the current time once during this render.
   const currentTime = new Date().toISOString();
