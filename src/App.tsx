@@ -9,18 +9,30 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import tweetsData from "./data/tweets.json";
+import React, { useEffect, useState } from "react";
 import type { Tweet } from "./types/Tweet";
-
+import { supabase } from "./utils/supabase";
 
 function App() {
   //tweets is the normal tweet
   //settweet is a function
-  const [tweets, setTweets] = useState<Tweet[]>(tweetsData as Tweet[]);
+  const [tweets, setTweets] = useState<Tweet[]>([]);
   
   const [input, setInput] = useState("")
 
+  useEffect(() => {
+  async function load() {
+    const { data, error } = await supabase
+      .from("tweets")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) console.error(error);
+    else setTweets(data || []);
+  }
+
+  load();
+}, []);
 
   const handleYap = () => {
     if(!input.trim()) return;
