@@ -10,8 +10,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import type { Tweet } from "C:/Users/JonathanWayland/Documents/node/yapper/src/types/Tweet.ts";
-import { supabase } from "C:/Users/JonathanWayland/Documents/node/yapper/src/utils/supabase";
+import type { Tweet } from "../types/Tweet";
+import { supabase } from "../utils/supabase";
 
 function App() {
   //tweets is the normal tweet
